@@ -1,0 +1,106 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "name": "Untitled3.ipynb",
+      "version": "0.3.2",
+      "provenance": [],
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/andrewjang74/MyProject/blob/master/lab-03-1-minimizing_cost_show_graph\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "metadata": {
+        "id": "ngffaG73e6Mw",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "cell_type": "code",
+      "source": [
+        "import tensorflow as tf\n",
+        "import matplotlib.pyplot as plt\n",
+        "\n",
+        "X = [1, 2, 3]\n",
+        "Y = [1, 2, 3]\n",
+        "\n",
+        "W = tf.placeholder(tf.float32)\n",
+        "\n"
+      ],
+      "execution_count": 0,
+      "outputs": []
+    },
+    {
+      "metadata": {
+        "id": "uiHLueiSfA1I",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "cell_type": "code",
+      "source": [
+        "# Our hypothesis for linear model X * W\n",
+        "hypothesis = X * W\n",
+        "\n",
+        "# cost/loss function\n",
+        "cost = tf.reduce_mean(tf.square(hypothesis - Y))\n",
+        "\n",
+        "# Variables for plotting cost function\n",
+        "W_history = []\n",
+        "cost_history = []\n",
+        "\n"
+      ],
+      "execution_count": 0,
+      "outputs": []
+    },
+    {
+      "metadata": {
+        "id": "BDowblzqfBPx",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "cell_type": "code",
+      "source": [
+        "# Launch the graph in a session.\n",
+        "with tf.Session() as sess:\n",
+        "    for i in range(-30, 50):\n",
+        "        curr_W = i * 0.1\n",
+        "        curr_cost = sess.run(cost, feed_dict={W: curr_W})\n",
+        "\n",
+        "        W_history.append(curr_W)\n",
+        "        cost_history.append(curr_cost)\n",
+        "\n"
+      ],
+      "execution_count": 0,
+      "outputs": []
+    },
+    {
+      "metadata": {
+        "id": "bPOUQ4HzpQGQ",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "cell_type": "code",
+      "source": [
+        "# Show the cost function\n",
+        "plt.plot(W_history, cost_history)\n",
+        "plt.show()"
+      ],
+      "execution_count": 0,
+      "outputs": []
+    }
+  ]
+}
